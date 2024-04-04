@@ -36,5 +36,6 @@ class Compra(models.Model):
 
 class DetalleCompra(models.Model):
     compra = models.ForeignKey(Compra, on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Producto)
     cantidad = models.PositiveIntegerField(default=1)
     precio_unitario = models.DecimalField(max_digits=10,decimal_places=2)
