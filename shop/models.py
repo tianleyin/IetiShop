@@ -28,7 +28,6 @@ class Producto(models.Model):
 class Carrito(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     productos = models.ManyToManyField(Producto)
-    cantidad = models.PositiveIntegerField(default=1)
 
 class Compra(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

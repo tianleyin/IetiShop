@@ -10,12 +10,16 @@ class Command(BaseCommand):
         fake = Faker()
         fake.add_provider(MusicProvider)
 
-        # Obtén una lista de todas las categorías disponibles
-        categorias = Categoria.objects.all()
+        # Crear nuevas categorías
+        categorias_nuevas = ['Guitarras', 'Pianos', 'Baterías', 'Violines']
+        nuevas_categorias_objs = []
+        for nombre_categoria in categorias_nuevas:
+            nueva_categoria = Categoria.objects.create(nombre=nombre_categoria)
+            nuevas_categorias_objs.append(nueva_categoria)
 
         for _ in range(10):  # Generar 10 productos de ejemplo
-            # Selecciona una categoría aleatoria para cada producto
-            categoria = fake.random_element(categorias)
+            # Seleccionar una categoría aleatoria para cada producto
+            categoria = fake.random_element(nuevas_categorias_objs)
 
             producto = Producto.objects.create(
                 nombre=fake.music_instrument(),
