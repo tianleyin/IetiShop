@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    {% if categoria %}
+    <h2>Categoría: {{ categoria.nombre }}</h2>
+    {% endif %}
+    <ul>
+        {% for producto in productos %}
+        <li><a href="{% url 'product_detail' producto.id %}">{{ producto.nombre }}</a></li>
+        {% empty %}
+        <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
